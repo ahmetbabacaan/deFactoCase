@@ -5,7 +5,7 @@ import com.google.gson.annotations.SerializedName
 import kotlinx.android.parcel.Parcelize
 
 
-data class MoviesListResponseDao (
+data class MoviesListResponseDao(
     @SerializedName("Response") val success: Boolean?,
     @SerializedName("Search") val movieResponses: List<MovieResponse>?,
     @SerializedName("totalResults") val totalResults: Int?

@@ -7,7 +7,7 @@
 
     <!-- Search -->
     <string name="search_hint">Film,Dizi Araması Yapınız</string>
-    <string name="search_welcome">Hoşgeldiniz</string>
+    <string name="search_welcome">Hoşgeldiniz :)</string>
     <string name="search_no_results">Arama sonucu bulunamadı</string>
     <string name="add_favorite_list">Favori Listesi Ekle</string>
     <string name="add_favorite_list_message">Favori listesi oluşturmak için lütfen bir isim giriniz</string>
@@ -20,6 +20,7 @@
 
 
     <!-- Favorite List -->
+    <string name="favorite">Favoriler</string>
     <string name="verify_deletion">Silme işlemini doğrulama</string>
     <string name="verify_deletion_message">Silmek istediğinize emin misiniz?</string>
     <string name="delete">Sil</string>
@@ -53,5 +54,15 @@
     <string name="password_incorrect">Şifrenizi yanlış girdiniz</string>
     <string name="password_change">Şifre Değiştir</string>
     <string name="password_confirm">Şifre Onayla</string>
+
+    <!-- Settings -->
+    <string name="settings">Ayarlar</string>
+    <string name="logout">Çıkış Yap</string>
+    <string name="dark_mode">Karanlık Mod</string>
+    <string name="language">Dil Seçimi</string>
+    <string name="language_english">İngilizce</string>
+    <string name="language_turkish">Türkçe</string>
+    <string name="authentication_setting">Kimlik Doğrulama Ayarı</string>
+
 
 </resources>

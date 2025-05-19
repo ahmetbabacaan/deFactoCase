@@ -3,8 +3,10 @@ package com.babacan.defactocase.presentation.reset_password
 import androidx.compose.ui.text.input.PasswordVisualTransformation
 import androidx.compose.ui.text.input.VisualTransformation
 import androidx.lifecycle.viewModelScope
+import com.babacan.defactocase.R
 import com.babacan.defactocase.common.toSHA1
 import com.babacan.defactocase.data.room.DeFactoDAO
+import com.babacan.defactocase.common.StringProvider
 import com.babacan.defactocase.domain.model.PasswordConstraint
 import com.babacan.defactocase.domain.model.PasswordConstraintType
 import com.babacan.defactocase.presentation.base.BaseViewModel
@@ -19,10 +21,35 @@ import javax.inject.Inject
 @HiltViewModel
 class ResetPasswordViewModel @Inject constructor(
     private val deFactoDAO: DeFactoDAO,
-) :
-    BaseViewModel<ResetPasswordEvent, ResetPasswordState, ResetPasswordEffect>() {
-    override fun setInitialState(): ResetPasswordState {
-        return ResetPasswordState()
+    stringProvider: StringProvider,
+) : BaseViewModel<ResetPasswordEvent, ResetPasswordState, ResetPasswordEffect>() {
+
+    override fun setInitialState(): ResetPasswordState = ResetPasswordState()
+
+    init {
+        val constraints = listOf(
+            PasswordConstraint(
+                PasswordConstraintType.LENGTH,
+                stringProvider.getString(R.string.password_constraint_message),
+                false
+            ),
+            PasswordConstraint(
+                PasswordConstraintType.UPPER_CASE,
+                stringProvider.getString(R.string.password_constraint_message_2),
+                false
+            ),
+            PasswordConstraint(
+                PasswordConstraintType.LOWER_CASE,
+                stringProvider.getString(R.string.password_constraint_message_3),
+                false
+            ),
+            PasswordConstraint(
+                PasswordConstraintType.NUMBER_SPECIAL_CHARACTER,
+                stringProvider.getString(R.string.password_constraint_message_4),
+                false
+            ),
+        )
+        setState { copy(passwordConstraints = constraints) }
     }
 
     override fun handleEvents(event: ResetPasswordEvent) {
@@ -34,6 +61,7 @@ class ResetPasswordViewModel @Inject constructor(
             ResetPasswordEvent.OnPasswordVisibilityChanged -> {
                 setState { copy(showPasswordVisibility = !showPasswordVisibility) }
             }
+
             is ResetPasswordEvent.OnNewPasswordChanged -> {
                 setState {
                     copy(
@@ -44,27 +72,28 @@ class ResetPasswordViewModel @Inject constructor(
                     )
                 }
             }
+
             is ResetPasswordEvent.OnPreviousPasswordChanged -> {
-                setState {
-                    copy(previousPassword = event.password,)
-                }
+                setState { copy(previousPassword = event.password) }
             }
 
             ResetPasswordEvent.OnRegisterClicked -> {
                 setState { copy(isLoading = true) }
-                viewModelScope.launch (Dispatchers.IO) {
+                viewModelScope.launch(Dispatchers.IO) {
                     val user = deFactoDAO.getLoggedInUser()
-
                     if (user != null) {
                         val checkPassword = deFactoDAO.checkPassword(
                             password = getCurrentState().previousPassword.toSHA1(),
                             userId = user._id
                         )
                         if (checkPassword == null) {
-                            setState { copy(isError = true) }
+                            setState { copy(isError = true, isLoading = false) }
                             return@launch
                         }
-                        deFactoDAO.updateUserPassword(user._id, getCurrentState().newPassword.toSHA1())
+                        deFactoDAO.updateUserPassword(
+                            user._id,
+                            getCurrentState().newPassword.toSHA1()
+                        )
                         setEffect { ResetPasswordEffect.NavigateBack }
                     }
                 }
@@ -93,20 +122,7 @@ data class ResetPasswordState(
     val newPassword: String = "",
     val showPasswordVisibility: Boolean = true,
     val isError: Boolean = false,
-    val passwordConstraints: List<PasswordConstraint> = listOf(
-        PasswordConstraint(
-            PasswordConstraintType.LENGTH, "Şifre en az 8 karakter uzunluğunda olmalıdır.", false
-        ),
-        PasswordConstraint(
-            PasswordConstraintType.UPPER_CASE, "Şifre en az bir büyük harf içermelidir.", false
-        ),
-        PasswordConstraint(PasswordConstraintType.LOWER_CASE, "Bir küçük harf.", false),
-        PasswordConstraint(
-            PasswordConstraintType.NUMBER_SPECIAL_CHARACTER,
-            "Şifre en az bir rakam veya özel karakter içermelidir.",
-            false
-        ),
-    ),
+    val passwordConstraints: List<PasswordConstraint> = emptyList(),
 ) : State {
     val passwordVisualTransformation: VisualTransformation
         get() = if (showPasswordVisibility) {
@@ -116,15 +132,7 @@ data class ResetPasswordState(
         }
 
     val isButtonEnabled: Boolean
-        get() = passwordConstraints.all {
-            when (it.id) {
-                PasswordConstraintType.LENGTH -> it.isValid
-                PasswordConstraintType.UPPER_CASE -> it.isValid
-                PasswordConstraintType.LOWER_CASE -> it.isValid
-                PasswordConstraintType.NUMBER_SPECIAL_CHARACTER -> it.isValid
-                else -> true
-            }
-        }
+        get() = passwordConstraints.all { it.isValid }
 }
 
 sealed interface ResetPasswordEffect : Effect {

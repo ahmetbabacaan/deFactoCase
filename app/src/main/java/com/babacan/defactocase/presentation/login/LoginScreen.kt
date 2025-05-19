@@ -1,18 +1,15 @@
 package com.babacan.defactocase.presentation.login
 
-import android.util.Log
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
-import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
-import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxWidth
@@ -36,9 +33,6 @@ import androidx.compose.ui.graphics.ColorFilter
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.unit.dp
 import com.babacan.defactocase.R
-import com.babacan.defactocase.domain.model.PasswordConstraintType
-import com.babacan.defactocase.presentation.register.PasswordConstraint
-import com.babacan.defactocase.presentation.register.RegisterEvent
 import com.babacan.defactocase.ui.drawables.IcEyesOff
 import com.babacan.defactocase.ui.drawables.IcEyesOn
 import kotlinx.coroutines.launch

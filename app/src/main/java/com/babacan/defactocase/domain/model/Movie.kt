@@ -18,4 +18,4 @@ data class Movie(
     val year: String?,
     val isFavorite: Boolean = false,
     val listName: String = "Favoriler",
-): Parcelable
+) : Parcelable

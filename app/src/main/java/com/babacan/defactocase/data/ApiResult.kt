@@ -1,6 +1,5 @@
 package com.babacan.defactocase.data
 
-import androidx.annotation.StringRes
 import java.net.HttpURLConnection
 
 
@@ -20,7 +19,7 @@ sealed class ErrorReason(
     val errorMessage: String? = null,
     val exception: Exception? = null
 ) {
-    data object NetworkConnection : ErrorReason(null, null, null,)
+    data object NetworkConnection : ErrorReason(null, null, null)
     data object Authorization : ErrorReason(HttpURLConnection.HTTP_UNAUTHORIZED, null, null)
     class Unspecified(
         httpResponseCode: Int? = null,
@@ -34,17 +33,16 @@ sealed class ErrorReason(
 }
 
 fun <T> ApiCallResult<T>.getOrNull(): T? {
-    return if(this is ApiCallResult.Success){
+    return if (this is ApiCallResult.Success) {
         this.data
-    }
-    else{
+    } else {
         null
     }
 }
 
 
 fun <T> ApiCallResult<T>.mapToResult(): Result<T> {
-    return when(this){
+    return when (this) {
         is ApiCallResult.Success -> Result.success(this.data)
         is ApiCallResult.Error -> {
             Result.failure(

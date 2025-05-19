@@ -39,11 +39,11 @@ fun PosterImage(
         contentDescription = "Movie poster",
         modifier = modifier.then(
             Modifier
-                .conditional(placeholderShown){
+                .conditional(placeholderShown) {
                     border(4.dp, Color.Gray)
                 }
                 .height(posterHeight)
-                .aspectRatio(120f/160f)
+                .aspectRatio(120f / 160f)
         )
     )
 }

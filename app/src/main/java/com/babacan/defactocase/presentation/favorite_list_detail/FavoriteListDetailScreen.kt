@@ -29,10 +29,12 @@ import androidx.compose.runtime.remember
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.ColorFilter
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.window.Dialog
 import androidx.hilt.navigation.compose.hiltViewModel
+import com.babacan.defactocase.R
 import com.babacan.defactocase.domain.model.Movie
 import com.babacan.defactocase.presentation.home.MovieItem
 import com.babacan.defactocase.presentation.home.SelectableFavoriteList
@@ -190,7 +192,7 @@ fun MoveFavoriteDialog(
                         .weight(1f)
                         .padding(4.dp)
                 ) {
-                    Text("İptal")
+                    Text(stringResource(id = R.string.cancel))
                 }
 
                 Button(
@@ -200,7 +202,7 @@ fun MoveFavoriteDialog(
                         .padding(4.dp),
                     enabled = selectedList.value != movie.second?.listName
                 ) {
-                    Text("Düzenle")
+                    Text(stringResource(id = R.string.edit_favorite_list))
                 }
             }
         }

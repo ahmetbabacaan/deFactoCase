@@ -5,7 +5,7 @@ import com.babacan.defactocase.domain.model.MovieDetails
 import com.babacan.defactocase.domain.model.Rating
 import javax.inject.Inject
 
-class MovieDetailsMapper @Inject constructor(){
+class MovieDetailsMapper @Inject constructor() {
 
     fun map(movieDetailsResponseDao: MovieDetailsResponse) = MovieDetails(
         actors = movieDetailsResponseDao.actors,

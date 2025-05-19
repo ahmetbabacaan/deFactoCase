@@ -208,7 +208,10 @@ fun HomeScreen(
                 if (favorites.contains(stringResource(id = R.string.favorites))) {
                     favorites.toImmutableList()
                 } else {
-                    listOf(stringResource(id = R.string.favorites), *favorites.toTypedArray()).toImmutableList()
+                    listOf(
+                        stringResource(id = R.string.favorites),
+                        *favorites.toTypedArray()
+                    ).toImmutableList()
                 }
             }
             SelectOrCreateFavoriteListDialog(

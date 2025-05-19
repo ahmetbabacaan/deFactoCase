@@ -115,6 +115,7 @@ class HomeViewModel @Inject constructor(
             HomeEvent.OnSortByTitle -> {
                 setState { copy(showSortBottomSheet = false) }
             }
+
             HomeEvent.OnSortByYear -> {
                 setState { copy(showSortBottomSheet = false) }
             }
@@ -134,9 +135,10 @@ class HomeViewModel @Inject constructor(
     }
 
     private fun searchMovies(query: String) {
-        val data = Pager(config = PagingConfig(
-            pageSize = AppConstants.PAGE_SIZE, prefetchDistance = AppConstants.PREFETCH_DISTANCE
-        ), pagingSourceFactory = { pagingSourceFactory.create(query) }).flow
+        val data = Pager(
+            config = PagingConfig(
+                pageSize = AppConstants.PAGE_SIZE, prefetchDistance = AppConstants.PREFETCH_DISTANCE
+            ), pagingSourceFactory = { pagingSourceFactory.create(query) }).flow
 
         setState { copy(pagingDataFlow = data) }
     }

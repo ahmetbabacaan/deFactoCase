@@ -7,7 +7,7 @@
 
     <!-- Search -->
     <string name="search_hint">Search for movies, series</string>
-    <string name="search_welcome">Welcome</string>
+    <string name="search_welcome">Welcome :)</string>
     <string name="search_no_results">No search results found</string>
     <string name="add_favorite_list">Add Favorite List</string>
     <string name="add_favorite_list_message">Please enter a name to create a favorite list</string>
@@ -19,6 +19,7 @@
     <string name="favorites">Favorites</string>
 
     <!-- Favorite List -->
+    <string name="favorite">Favorites</string>
     <string name="verify_deletion">Verify deletion</string>
     <string name="verify_deletion_message">Are you sure you want to delete?</string>
     <string name="delete">Delete</string>
@@ -52,4 +53,14 @@
     <string name="password_incorrect">You entered your password incorrectly</string>
     <string name="password_change">Change Password</string>
     <string name="password_confirm">Confirm Password</string>
+
+    <!-- Settings -->
+    <string name="settings">Settings</string>
+    <string name="logout">Logout</string>
+    <string name="dark_mode">Dark Mode</string>
+    <string name="language">Language Selection</string>
+    <string name="language_english">English</string>
+    <string name="language_turkish">Turkish</string>
+    <string name="authentication_setting">Authentication Setting</string>
+
 </resources>

@@ -1,4 +1,3 @@
-
 package com.babacan.defactocase.navigation
 
 import androidx.compose.runtime.Composable
@@ -16,26 +15,15 @@ fun rememberDeFactoAppState(
     navController: NavHostController = rememberNavController(),
 ): DeFactoAppState {
     return remember(navController, coroutineScope) {
-        DeFactoAppState(navController, coroutineScope)
+        DeFactoAppState(navController)
     }
 }
 
 @Stable
 class DeFactoAppState(
     val navController: NavHostController,
-    val coroutineScope: CoroutineScope,
 ) {
 
     val startDestination: String = HomeRoute
-        /*
-        get() = if (Firebase.auth.currentUser == null) {
-            welcomeRoute
-        } else {
-            coroutineScope.launch {
-                Session.createAccount = getUser()
-            }
-            HomeRoute
-        }
 
-         */
 }

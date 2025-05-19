@@ -1,4 +1,5 @@
 package com.babacan.defactocase.data.model
+
 import com.google.gson.annotations.SerializedName
 
 

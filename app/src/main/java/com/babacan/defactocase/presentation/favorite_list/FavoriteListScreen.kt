@@ -118,6 +118,13 @@ fun FavoriteListScreen(
                 .padding(top = 16.dp),
         ) {
 
+            Text(
+                text = stringResource(id = R.string.favorite),
+                style = MaterialTheme.typography.headlineLarge,
+                color = MaterialTheme.colorScheme.onBackground,
+                modifier = Modifier.padding(8.dp)
+            )
+
             LazyColumn {
                 items(viewState.favoriteItemList.size) { index ->
                     val item = viewState.favoriteItemList[index]

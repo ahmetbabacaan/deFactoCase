@@ -1,13 +1,10 @@
 package com.babacan.defactocase.data.mapper
 
 import com.babacan.defactocase.data.model.MovieResponse
-import com.babacan.defactocase.data.room.DeFactoDAO
 import com.babacan.defactocase.domain.model.Movie
 import javax.inject.Inject
 
-class MovieMapper @Inject constructor(
-    private val deFactoDAO: DeFactoDAO,
-) {
+class MovieMapper @Inject constructor() {
     fun map(movieResponse: MovieResponse) = Movie(
         imdbID = movieResponse.imdbID ?: throw IllegalArgumentException("imdbID is null"),
         poster = movieResponse.poster,

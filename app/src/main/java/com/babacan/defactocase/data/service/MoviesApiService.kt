@@ -10,10 +10,10 @@ interface MoviesApiService {
 
     @GET("./")
     suspend fun searchMoviesFor(
-        @Query("s") s:String,
+        @Query("s") s: String,
         @Query("page") page: Int
     ): Response<MoviesListResponseDao>
 
     @GET("./")
-    suspend fun getMovieDetailsForImdbId(@Query("i") imdbId:String): Response<MovieDetailsResponse>
+    suspend fun getMovieDetailsForImdbId(@Query("i") imdbId: String): Response<MovieDetailsResponse>
 }

@@ -22,43 +22,11 @@ import javax.inject.Inject
 @HiltViewModel
 class RegisterViewModel @Inject constructor(
     private val deFactoDAO: DeFactoDAO,
-    private val stringProvider: StringProvider
+    stringProvider: StringProvider,
 ) : BaseViewModel<RegisterEvent, RegisterState, RegisterEffect>() {
 
     override fun setInitialState(): RegisterState {
-        val constraints = listOf(
-            PasswordConstraint(
-                PasswordConstraintType.MAIL,
-                stringProvider.getString(R.string.email_constraint_message),
-                false
-            ),
-            PasswordConstraint(
-                PasswordConstraintType.LENGTH,
-                stringProvider.getString(R.string.password_constraint_message),
-                false
-            ),
-            PasswordConstraint(
-                PasswordConstraintType.UPPER_CASE,
-                stringProvider.getString(R.string.password_constraint_message_2),
-                false
-            ),
-            PasswordConstraint(
-                PasswordConstraintType.LOWER_CASE,
-                stringProvider.getString(R.string.password_constraint_message_3),
-                false
-            ),
-            PasswordConstraint(
-                PasswordConstraintType.NUMBER_SPECIAL_CHARACTER,
-                stringProvider.getString(R.string.password_constraint_message_4),
-                false
-            ),
-            PasswordConstraint(
-                PasswordConstraintType.MATCH_WITH_FIRST,
-                stringProvider.getString(R.string.password_constraint_message_5),
-                false
-            ),
-        )
-        return RegisterState(passwordConstraints = constraints)
+        return RegisterState()
     }
 
     override fun handleEvents(event: RegisterEvent) {
@@ -114,13 +82,47 @@ class RegisterViewModel @Inject constructor(
             }
         }
     }
-}
 
-fun stringToSHA1(input: String): String {
-    val bytes = input.toByteArray()
-    val sha1 = java.security.MessageDigest.getInstance("SHA-1")
-    val digest = sha1.digest(bytes)
-    return digest.joinToString("") { "%02x".format(it) }
+    init {
+        val constraints = listOf(
+            PasswordConstraint(
+                PasswordConstraintType.MAIL,
+                stringProvider.getString(R.string.email_constraint_message),
+                false
+            ),
+            PasswordConstraint(
+                PasswordConstraintType.LENGTH,
+                stringProvider.getString(R.string.password_constraint_message),
+                false
+            ),
+            PasswordConstraint(
+                PasswordConstraintType.UPPER_CASE,
+                stringProvider.getString(R.string.password_constraint_message_2),
+                false
+            ),
+            PasswordConstraint(
+                PasswordConstraintType.LOWER_CASE,
+                stringProvider.getString(R.string.password_constraint_message_3),
+                false
+            ),
+            PasswordConstraint(
+                PasswordConstraintType.NUMBER_SPECIAL_CHARACTER,
+                stringProvider.getString(R.string.password_constraint_message_4),
+                false
+            ),
+            PasswordConstraint(
+                PasswordConstraintType.MATCH_WITH_FIRST,
+                stringProvider.getString(R.string.password_constraint_message_5),
+                false
+            ),
+        )
+
+        setState {
+            copy(
+                passwordConstraints = constraints,
+            )
+        }
+    }
 }
 
 sealed interface RegisterEvent : Event {
@@ -160,9 +162,11 @@ data class RegisterState(
                 PasswordConstraintType.MAIL -> {
                     isEmailError
                 }
+
                 PasswordConstraintType.MATCH_WITH_FIRST -> {
                     secondPasswordMatch
                 }
+
                 else -> {
                     it.isValid
                 }

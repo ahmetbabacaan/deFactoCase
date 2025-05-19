@@ -14,7 +14,7 @@ class MoviesRepositoryImpl @Inject constructor(
     private val moviesApiService: MoviesApiService,
     private val searchMapper: MovieMapper,
     private val movieDetailMapper: MovieDetailsMapper
-): MoviesRepository {
+) : MoviesRepository {
 
     override suspend fun searchForMovies(text: String, page: Int): Result<List<Movie>> {
         return apiCall {

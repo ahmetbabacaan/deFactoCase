@@ -1,8 +1,9 @@
 package com.babacan.defactocase.presentation.favorite_list
 
 import androidx.lifecycle.viewModelScope
+import com.babacan.defactocase.R
+import com.babacan.defactocase.common.StringProvider
 import com.babacan.defactocase.data.room.DeFactoDAO
-import com.babacan.defactocase.domain.model.Movie
 import com.babacan.defactocase.presentation.base.BaseViewModel
 import com.babacan.defactocase.presentation.base.Effect
 import com.babacan.defactocase.presentation.base.Event
@@ -17,8 +18,9 @@ import javax.inject.Inject
 
 @HiltViewModel
 class FavoriteListViewModel @Inject constructor(
-    private val deFactoDAO: DeFactoDAO
-) :
+    private val deFactoDAO: DeFactoDAO,
+    private  val stringProvider: StringProvider,
+    ) :
     BaseViewModel<FavoriteListEvent, FavoriteListState, FavoriteListEffect>() {
     override fun setInitialState(): FavoriteListState {
         return FavoriteListState()
@@ -85,8 +87,10 @@ class FavoriteListViewModel @Inject constructor(
             deFactoDAO.getAllFavoriteMovies().map { movies ->
                 movies.listName
             }.distinct().let {
+                val defaultListName = stringProvider.getString(R.string.favorites)
+
                 if (it.isEmpty()) {
-                    setState { copy(favoriteItemList = persistentListOf("Favoriler")) }
+                    setState { copy(favoriteItemList = persistentListOf(defaultListName)) }
                 } else {
                     setState { copy(favoriteItemList = it.toImmutableList()) }
                 }
@@ -100,11 +104,12 @@ sealed interface FavoriteListEvent : Event {
     data object OnDeleteCanceled : FavoriteListEvent
     data object OnEditCanceled : FavoriteListEvent
 
-    data class OnFavoriteListClicked(val listName: String): FavoriteListEvent
+    data class OnFavoriteListClicked(val listName: String) : FavoriteListEvent
     data class OnEditClicked(val listName: String) : FavoriteListEvent
     data class OnDeleteClicked(val listName: String) : FavoriteListEvent
     data class OnDeleteConfirmed(val listName: String?) : FavoriteListEvent
-    data class OnEditConfirmed(val currentListName: String?, val previousListName: String) : FavoriteListEvent
+    data class OnEditConfirmed(val currentListName: String?, val previousListName: String) :
+        FavoriteListEvent
 }
 
 data class FavoriteListState(
@@ -116,5 +121,5 @@ data class FavoriteListState(
 
 sealed interface FavoriteListEffect : Effect {
     data object NavigateBack : FavoriteListEffect
-    data class NavigateToFavoriteList(val listName: String): FavoriteListEffect
+    data class NavigateToFavoriteList(val listName: String) : FavoriteListEffect
 }

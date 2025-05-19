@@ -30,6 +30,6 @@ data class MovieDetails(
 )
 
 data class Rating(
-   val source: String?,
-   val value: String?
+    val source: String?,
+    val value: String?
 )

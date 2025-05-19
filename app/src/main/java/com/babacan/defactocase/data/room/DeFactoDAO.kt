@@ -46,31 +46,24 @@ interface DeFactoDAO {
     @Query("SELECT * FROM search_results ORDER BY _id DESC")
     suspend fun getAllSearchResults(): List<SearchResult>
 
-    // check if email is already registered
     @Query("SELECT * FROM authentication WHERE email = :email")
     suspend fun checkEmail(email: String): User?
 
-    //insert User
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     suspend fun insertUser(user: User)
 
-    //check if user mail and password match
     @Query("SELECT * FROM authentication WHERE email = :email AND password = :password")
     suspend fun checkUser(email: String, password: String): User?
 
-    //get logged in user
     @Query("SELECT * FROM authentication WHERE isLoggedIn = 1")
     suspend fun getLoggedInUser(): User?
 
-    // update logged in status
     @Query("UPDATE authentication SET isLoggedIn = :loggedIn WHERE _id = :userId")
     suspend fun updateLoggedInStatus(userId: Int, loggedIn: Boolean): Int
 
-    //check if password is matched
     @Query("SELECT * FROM authentication WHERE password = :password AND _id = :userId")
     suspend fun checkPassword(password: String, userId: Int): User?
 
-    // check if password is matched then update user password
     @Query("UPDATE authentication SET password = :newPassword WHERE _id = :userId")
     suspend fun updateUserPassword(userId: Int, newPassword: String): Int
 

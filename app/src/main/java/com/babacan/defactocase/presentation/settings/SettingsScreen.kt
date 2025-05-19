@@ -60,9 +60,11 @@ fun SettingsRoute(
                 SettingsEffect.NavigateToChangePassword -> {
                     navigateToResetPassword()
                 }
+
                 SettingsEffect.NavigateToLogin -> {
                     navigateToLogin()
                 }
+
                 SettingsEffect.NavigateToRegister -> {
                     navigateToRegister()
                 }
@@ -94,6 +96,8 @@ fun SettingsScreen(
                 contentDescription = null,
                 colorFilter = ColorFilter.tint(MaterialTheme.colorScheme.onBackground),
             )
+
+
         },
     ) { innerPadding ->
         Column(
@@ -103,6 +107,13 @@ fun SettingsScreen(
                 .verticalScroll(rememberScrollState())
                 .padding(15.dp)
         ) {
+            Text(
+                text = stringResource(id = R.string.settings),
+                style = MaterialTheme.typography.headlineLarge,
+                color = MaterialTheme.colorScheme.onBackground,
+                modifier = Modifier
+            )
+
             DarkModeToggle(viewState.darkMode) {
                 onViewEvent(SettingsEvent.OnDarkModeToggle(it))
             }
@@ -142,7 +153,7 @@ fun SettingsScreen(
                         .align(Alignment.CenterHorizontally)
                         .clip(MaterialTheme.shapes.small),
                 ) {
-                    Text(text = "Çıkış Yap")
+                    Text(text = stringResource(id = R.string.logout))
                 }
             }
 
@@ -173,7 +184,7 @@ fun DarkModeToggle(
         Spacer(modifier = Modifier.height(16.dp))
 
         Row(verticalAlignment = Alignment.CenterVertically) {
-            Text(text = "Karanlık Mod", modifier = Modifier.weight(1f))
+            Text(text = stringResource(id = R.string.dark_mode), modifier = Modifier.weight(1f))
             Switch(
                 modifier = Modifier,
                 checked = isDarkMode,
@@ -198,7 +209,7 @@ fun LanguageSelector(
     ) {
 
         Row(verticalAlignment = Alignment.CenterVertically) {
-            Text(text = "Dil Seçimi", modifier = Modifier.weight(1f))
+            Text(text = stringResource(id = R.string.language), modifier = Modifier.weight(1f))
             Button(
                 onClick = {
                     onEnglishSelected()
@@ -207,7 +218,7 @@ fun LanguageSelector(
                     .padding(4.dp),
                 enabled = selectedLangCode != "en"
             ) {
-                Text("English")
+                Text(stringResource(id = R.string.language_english))
             }
 
             Button(
@@ -218,7 +229,7 @@ fun LanguageSelector(
                     .padding(4.dp),
                 enabled = selectedLangCode != "tr"
             ) {
-                Text("Türkçe")
+                Text(stringResource(id = R.string.language_turkish))
             }
         }
     }
@@ -240,7 +251,10 @@ fun AuthenticationSettings(
         Spacer(modifier = Modifier.height(16.dp))
 
         Row(verticalAlignment = Alignment.CenterVertically) {
-            Text(text = "Authentication Settings", modifier = Modifier.weight(1f))
+            Text(
+                text = stringResource(id = R.string.authentication_setting),
+                modifier = Modifier.weight(1f)
+            )
             if (isUserLoggedIn) {
                 Button(
                     onClick = { onResetPasswordClicked() },
@@ -248,7 +262,7 @@ fun AuthenticationSettings(
                         .padding(4.dp)
                         .clip(MaterialTheme.shapes.small)
                 ) {
-                    Text("Şifre Değiştir")
+                    Text(stringResource(id = R.string.password_change))
                 }
 
             } else {
@@ -258,7 +272,7 @@ fun AuthenticationSettings(
                         .clip(MaterialTheme.shapes.small)
                         .padding(end = 4.dp)
                 ) {
-                    Text("Giriş Yap")
+                    Text(stringResource(id = R.string.login))
                 }
 
                 Button(
@@ -267,7 +281,7 @@ fun AuthenticationSettings(
                         .clip(MaterialTheme.shapes.small)
 
                 ) {
-                    Text("Kayıt Ol")
+                    Text(stringResource(id = R.string.register))
                 }
             }
         }
@@ -283,7 +297,8 @@ private fun AuthenticationSettingsPreview() {
 @Preview(showBackground = true, showSystemUi = true)
 @Composable
 private fun SettingsScreenPreview() {
-    SettingsScreen(viewState = SettingsState(
-        appVersion = "1.0",
-    ), onViewEvent = { })
+    SettingsScreen(
+        viewState = SettingsState(
+            appVersion = "1.0",
+        ), onViewEvent = { })
 }
