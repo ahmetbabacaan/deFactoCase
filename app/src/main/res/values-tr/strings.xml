@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">DeFactoCase</string>
+    <string name="crew_members"><![CDATA[<b>Yönetmen:</b> %1$s <br> <b>Yazar: </b> %2$s <br>  <b>Oyuncular: </b>%3$s]]></string>
+    <string name="votes">%s oylama</string>
+    <string name="app_version">Uygulama Versiyonu: %s</string>
+
+    <!-- Search -->
+    <string name="search_hint">Film,Dizi Araması Yapınız</string>
+    <string name="search_welcome">Hoşgeldiniz</string>
+    <string name="search_no_results">Arama sonucu bulunamadı</string>
+    <string name="add_favorite_list">Favori Listesi Ekle</string>
+    <string name="add_favorite_list_message">Favori listesi oluşturmak için lütfen bir isim giriniz</string>
+    <string name="select_favorite_list">Favori Listesi Seç</string>
+    <string name="sort_by">Sırala</string>
+    <string name="sort_by_year">Yıla göre sırala</string>
+    <string name="sort_by_title">Başlığa göre sırala</string>
+    <string name="filter">Filtrele</string>
+    <string name="favorites">Favoriler</string>
+
+
+    <!-- Favorite List -->
+    <string name="verify_deletion">Silme işlemini doğrulama</string>
+    <string name="verify_deletion_message">Silmek istediğinize emin misiniz?</string>
+    <string name="delete">Sil</string>
+    <string name="cancel">İptal</string>
+    <string name="favorite_list_name">Favori liste adı giriniz</string>
+    <string name="edit_favorite_list">Favori listeyi düzenle</string>
+    <string name="favorite_list">Favori Liste</string>
+
+    <!-- Login -->
+    <string name="dismiss">Vazgeç</string>
+    <string name="email_or_password_is_incorrect">Email veya şifre hatalı</string>
+    <string name="login">Giriş Yap</string>
+    <string name="email">Email</string>
+    <string name="password">Şifre</string>
+
+    <!-- Error -->
+    <string name="error">Tekrar Dene</string>
+
+    <!-- Register -->
+    <string name="create_account">Hesap Oluştur</string>
+    <string name="confirm_password">Şifreyi Onayla</string>
+    <string name="register">Kayıt Ol</string>
+    <string name="email_constraint_message">e-posta adresi uygun olmalıdır.</string>
+    <string name="password_constraint_message">Şifre en az 8 karakter uzunluğunda olmalıdır</string>
+    <string name="password_constraint_message_2">Şifre en az bir küçük harf içermelidir.</string>
+    <string name="password_constraint_message_3">Şifre en az bir büyük harf içermelidir.</string>
+    <string name="password_constraint_message_4">Şifre en az bir rakam veya özel karakter içermelidir.</string>
+    <string name="password_constraint_message_5">Şifreler eşleşmelidir</string>
+
+    <!-- Reset Password -->
+    <string name="password_incorrect">Şifrenizi yanlış girdiniz</string>
+    <string name="password_change">Şifre Değiştir</string>
+    <string name="password_confirm">Şifre Onayla</string>
+
+</resources>

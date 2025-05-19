@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">DeFactoCase</string>
+    <string name="crew_members"><![CDATA[<b>Director:</b> %1$s <br> <b>Writer: </b> %2$s <br>  <b>Actors: </b>%3$s]]></string>
+    <string name="votes">%s Rates</string>
+    <string name="app_version">App version: %s</string>
+
+    <!-- Search -->
+    <string name="search_hint">Search for movies, series</string>
+    <string name="search_welcome">Welcome</string>
+    <string name="search_no_results">No search results found</string>
+    <string name="add_favorite_list">Add Favorite List</string>
+    <string name="add_favorite_list_message">Please enter a name to create a favorite list</string>
+    <string name="select_favorite_list">Select Favorite List</string>
+    <string name="sort_by">Sort by</string>
+    <string name="sort_by_year">Sort by year</string>
+    <string name="sort_by_title">Sort by title</string>
+    <string name="filter">Filter</string>
+    <string name="favorites">Favorites</string>
+
+    <!-- Favorite List -->
+    <string name="verify_deletion">Verify deletion</string>
+    <string name="verify_deletion_message">Are you sure you want to delete?</string>
+    <string name="delete">Delete</string>
+    <string name="cancel">Cancel</string>
+    <string name="favorite_list_name">Enter favorite list name</string>
+    <string name="edit_favorite_list">Edit favorite list</string>
+    <string name="favorite_list">Favorite List</string>
+
+    <!-- Login -->
+    <string name="dismiss">Dismiss</string>
+    <string name="email_or_password_is_incorrect">Email or password is incorrect</string>
+    <string name="login">Login</string>
+    <string name="email">Email</string>
+    <string name="password">Password</string>
+
+    <!-- Error -->
+    <string name="error">Try Again</string>
+
+    <!-- Register -->
+    <string name="create_account">Create Account</string>
+    <string name="confirm_password">Confirm Password</string>
+    <string name="register">Register</string>
+    <string name="email_constraint_message">Email address must be valid.</string>
+    <string name="password_constraint_message">Password must be at least 8 characters long</string>
+    <string name="password_constraint_message_2">Password must contain at least one lowercase letter.</string>
+    <string name="password_constraint_message_3">Password must contain at least one uppercase letter.</string>
+    <string name="password_constraint_message_4">Password must contain at least one digit or special character.</string>
+    <string name="password_constraint_message_5">Passwords must match</string>
+
+    <!-- Reset Password -->
+    <string name="password_incorrect">You entered your password incorrectly</string>
+    <string name="password_change">Change Password</string>
+    <string name="password_confirm">Confirm Password</string>
+</resources>
