@@ -49,5 +49,5 @@ app/src/test/ - Unit tests
 
 1. Clone the repository:
    ```sh
-   git clone https://github.com/ahmetbabacaan/defacto-movie-app.git
-   cd defacto-movie-app
+   git clone https://github.com/ahmetbabacaan/deFactoCase.git
+   cd deFactoCase
