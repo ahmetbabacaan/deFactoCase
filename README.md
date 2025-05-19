@@ -38,6 +38,13 @@ app/src/test/ - Unit tests
 - JDK 17+
 - Gradle
 
+
+
+- <img width="157" alt="Screenshot 2025-05-19 at 17 06 28" src="https://github.com/user-attachments/assets/a441aaf8-fea1-4d7f-b630-05eb9a2e33f8" />
+<img width="157" alt="Screenshot 2025-05-19 at 17 04 36" src="https://github.com/user-attachments/assets/07c49a59-6d9c-4db3-adbf-4f0fd706d66d" />
+<img width="157" alt="Screenshot 2025-05-19 at 17 04 01" src="https://github.com/user-attachments/assets/74d8dfc4-e800-4e3a-9b03-c32897c69f44" />
+
+
 ### Setup
 
 1. Clone the repository:
